@@ -17,4 +17,5 @@ VOLUME ["/btsync", "/tmp/conf"]
 
 CMD cp /tmp/conf/btsync.conf /tmp/btsync.conf && \
     sed -i "s/My Sync Device/docker \(merlin83\) \- $HOSTNAME/g" /tmp/btsync.conf && \
-    /tmp/btsync --nodaemon --config /tmp/btsync.conf
+    /tmp/btsync --log /tmp/btsync.log --config /tmp/btsync.conf && \
+    tail -fF /tmp/btsync.log
