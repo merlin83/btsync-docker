@@ -16,7 +16,8 @@ else
     echo "Using conf/btsync.conf";
 fi;
 
-docker run  -d -P \
+docker run  -d \
+            --restart always \
             -v "/opt/btsync/:/btsync/" \
             -v "$PWD/conf/:/tmp/conf/" \
             --name btsync \
